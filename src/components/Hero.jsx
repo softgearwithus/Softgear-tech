@@ -20,9 +20,9 @@ export default function Hero() {
           className="flex-1"
         >
           <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
-            We Build <span className="text-cyan-500">Ideas into Reality</span>
+            We Build <span className="text-white">Ideas into Reality</span>
           </h1>
-          <p className="mt-6 text-lg text-black">
+          <p className="mt-6 text-lg text-white">
             From websites to apps, design to marketing — your all-in-one digital
             partner. Let's create something amazing together.
           </p>

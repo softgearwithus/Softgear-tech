@@ -28,8 +28,8 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link to="/pricing" className="hover:text-cyan-500 transition">
-              Pricing
+            <Link to="/packages" className="hover:text-cyan-500 transition">
+              Packages
             </Link>
           </li>
           <li>

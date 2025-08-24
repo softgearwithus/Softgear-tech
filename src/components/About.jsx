@@ -9,16 +9,16 @@ const AboutUs = () => {
           About Softgear Technologies
         </h2>
         <p className="mt-4 text-gray-600 text-lg leading-relaxed">
-          Softgear Technologies Pvt. Ltd. is a forward-thinking{" "}
-          <strong>digital solutions provider</strong> dedicated to transforming{" "}
-          <strong>businesses into brands</strong>. We empower startups and SMEs
-          across India with cutting-edge web, mobile, and marketing solutions,
-          enabling them to compete and thrive in today’s digital economy.
+          At <strong>Softgear Technologies</strong>, we started with a simple but
+          powerful vision — to empower local businesses struggling to survive in
+          the digital era. While large agencies charge high fees with little
+          value, many small businesses lack even the basics, like a proper Google
+          My Business presence. We’re here to change that.
         </p>
       </div>
 
-      {/* Content */}
-      <div className="mt-12 grid md:grid-cols-2 gap-10 items-center">
+      {/* Content Grid */}
+      <div className="mt-16 grid md:grid-cols-2 gap-12 items-center">
         {/* Left Image */}
         <div className="flex justify-center">
           <img
@@ -30,38 +30,49 @@ const AboutUs = () => {
         </div>
 
         {/* Right Text */}
-        <div>
-          <h3 className="text-2xl font-semibold text-gray-800">
-            Who We Are
-          </h3>
-          <p className="mt-4 text-gray-600 leading-relaxed">
-            From full-stack websites & mobile apps to{" "}
-            <strong>branding, SEO, Google Business, and digital marketing</strong>,
-            we deliver everything businesses need to stand out in today’s
-            competitive market — all under one roof. Our tiered premium packages
-            and risk-free first-month trial make high-quality digital solutions
-            accessible and affordable for every entrepreneur.
+        <div className="space-y-6">
+          <h3 className="text-2xl font-semibold text-gray-800">Who We Are</h3>
+          <p className="text-gray-600 leading-relaxed">
+            We provide <strong>end-to-end digital solutions</strong> — from
+            full-stack websites & mobile apps to{" "}
+            <strong>branding, SEO, Google Business, and digital marketing</strong>.
+            Our goal is to make premium digital solutions affordable and
+            result-driven. With tiered service packages and a risk-free first-month
+            trial, we make digital growth accessible for every entrepreneur.
           </p>
 
-          <div className="mt-6 space-y-4">
+          {/* Vision & Mission */}
+          <div className="space-y-6">
             <div>
               <h4 className="text-lg font-semibold text-gray-900">Our Vision</h4>
               <p className="mt-2 text-gray-600 leading-relaxed">
                 To <strong>digitalize 75 million SMEs in India</strong>, giving
-                them the tools and visibility needed to excel in the competitive
-                market.
+                them the visibility and tools needed to grow, scale, and
+                succeed in today’s competitive market.
               </p>
             </div>
+
             <div>
               <h4 className="text-lg font-semibold text-gray-900">Our Mission</h4>
               <p className="mt-2 text-gray-600 leading-relaxed">
-                To provide innovative, affordable, and result-oriented digital
-                solutions that help businesses grow, connect with their audience,
-                and build lasting brands.
+                To provide <strong>innovative, affordable, and scalable</strong>{" "}
+                digital solutions that help businesses connect with their
+                audience, strengthen their brand, and achieve measurable growth.
               </p>
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Extra Section for Professional Feel */}
+      <div className="mt-20 max-w-4xl mx-auto text-center">
+        <p className="text-gray-700 text-lg leading-relaxed">
+          Beyond empowering local businesses, we are also developing{" "}
+          <strong>cutting-edge software products</strong> for healthcare,
+          e-commerce, and retail, while leveraging{" "}
+          <strong>AI and automation</strong> to improve efficiency and unlock
+          growth opportunities.
+        </p>
       </div>
     </section>
   );
