@@ -22,7 +22,7 @@ export default function Hero() {
           <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
             We Build <span className="text-cyan-500">Ideas into Reality</span>
           </h1>
-          <p className="mt-6 text-lg text-gray-600">
+          <p className="mt-6 text-lg text-black">
             From websites to apps, design to marketing — your all-in-one digital
             partner. Let's create something amazing together.
           </p>
