@@ -72,8 +72,8 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <Link to="/resources" className="hover:text-cyan-500 transition">
-                Resources
+              <Link to="/packages" className="hover:text-cyan-500 transition">
+                Packages
               </Link>
             </li>
             <li>
