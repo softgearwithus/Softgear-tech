@@ -78,7 +78,7 @@ export default function Hero() {
   };
 
   return (
-    <div className="relative bg-blue-800 text-gray-900 min-h-screen overflow-hidden">
+    <div className="relative bg-blue-700 text-gray-950 min-h-screen overflow-hidden">
       {/* Navbar */}
       <Navbar />
 

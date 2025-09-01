@@ -27,11 +27,40 @@ export default function CompliancePage() {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Compliance Form Submitted:", formData);
-    // 👉 Connect this to backend/email service
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    const response = await fetch("https://softgear-tech-backend.vercel.app/api/formdata/compliance", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+      alert("✅ Compliance form submitted successfully!");
+      setFormData({
+        founderName: "",
+        companyName: "",
+        email: "",
+        phone: "",
+        registrationType: "",
+        services: [],
+        message: "",
+      });
+    } else {
+      alert("❌ Error: " + result.message);
+    }
+  } catch (error) {
+    console.error("Submission error:", error);
+    alert("❌ Failed to submit the form. Please try again.");
+  }
+};
+
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-slate-900 to-slate-800 flex items-center justify-center px-4 py-12">

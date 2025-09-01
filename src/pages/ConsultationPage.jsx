@@ -16,11 +16,40 @@ export default function ConsultationPage() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Consultation Booking Submitted:", formData);
-    // 👉 Connect this to backend or Google Calendar / email service
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    const response = await fetch("https://softgear-tech-backend.vercel.app/api/formdata/consultation", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+      alert("✅ Consultation booked successfully!");
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        businessStage: "",
+        preferredDate: "",
+        preferredTime: "",
+        notes: "",
+      });
+    } else {
+      alert("❌ Error: " + result.message);
+    }
+  } catch (error) {
+    console.error("Submission error:", error);
+    alert("❌ Failed to submit the form. Please try again.");
+  }
+};
+
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-slate-900 to-slate-800 flex items-center justify-center px-4 py-12">
