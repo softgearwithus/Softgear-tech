@@ -14,17 +14,13 @@ import WhyChooseUs from "../components/Whyuse";
 function Home() {
   return (
     <>
-      <FloatingCTA/>
-      <Hero/>
-      <StatsSection/>
-      <ExpertiseSection/>
-      <WhyChooseUs/>
-      <TechnologiesWeUse/>
-      <SuccessStories/>
-      <ClientsFeedback/>
-      <AboutUs/>
-      <MeetOurTeam/>
-      <Footer/>
+      <Hero />
+      <StatsSection />
+      <ExpertiseSection />
+      <TechnologiesWeUse />
+      <SuccessStories />
+      <ClientsFeedback />
+      <Footer />
     </>
   );
 }

@@ -66,21 +66,14 @@ export default function StatsSection() {
   const cardVariants = {
     hidden: {
       opacity: 0,
-      y: 60,
-      scale: 0.8,
-      rotateX: 45
+      y: 30
     },
     visible: {
       opacity: 1,
       y: 0,
-      scale: 1,
-      rotateX: 0,
       transition: {
-        duration: 0.8,
-        ease: [0.25, 0.46, 0.45, 0.94],
-        type: "spring",
-        damping: 20,
-        stiffness: 100
+        duration: 0.6,
+        ease: "easeOut"
       }
     }
   };
@@ -88,15 +81,13 @@ export default function StatsSection() {
   const headingVariants = {
     hidden: {
       opacity: 0,
-      y: 50,
-      scale: 0.9
+      y: 30
     },
     visible: {
       opacity: 1,
       y: 0,
-      scale: 1,
       transition: {
-        duration: 0.8,
+        duration: 0.6,
         ease: "easeOut"
       }
     }
@@ -168,7 +159,7 @@ export default function StatsSection() {
                 {startCount && (
                   <CountUp
                     end={5}
-                    duration={2.5}
+                    duration={4}
                     enableScrollSpy={true}
                     scrollSpyOnce={true}
                   />
@@ -200,7 +191,7 @@ export default function StatsSection() {
                 {startCount && (
                   <CountUp
                     end={50}
-                    duration={2.5}
+                    duration={4}
                     delay={0.2}
                     enableScrollSpy={true}
                     scrollSpyOnce={true}
@@ -234,7 +225,7 @@ export default function StatsSection() {
                 {startCount && (
                   <CountUp
                     end={10}
-                    duration={2.5}
+                    duration={4}
                     delay={0.4}
                     enableScrollSpy={true}
                     scrollSpyOnce={true}
@@ -271,8 +262,8 @@ export default function StatsSection() {
                 {startCount && (
                   <CountUp
                     end={100}
-                    duration={2.5}
-                    delay={0.6}
+                    duration={4}
+                    delay={0.4}
                     enableScrollSpy={true}
                     scrollSpyOnce={true}
                   />
@@ -310,3 +301,4 @@ export default function StatsSection() {
     </section>
   );
 }
+

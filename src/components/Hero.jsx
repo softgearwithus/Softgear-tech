@@ -77,8 +77,13 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 1.0 }}
           >
             <motion.button
-              className="relative bg-[#7ADAA5] sm:px-6 md:px-8 lg:px-10 py-3 sm:py-4 md:py-5 rounded-2xl font-bold text-xs sm:text-sm md:text-base lg:text-lg transition-all duration-700 group overflow-hidden"
+              className="relative bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 sm:px-6 md:px-8 lg:px-10 py-3 sm:py-4 md:py-5 rounded-2xl font-bold text-xs sm:text-sm md:text-base lg:text-lg transition-all duration-700 group overflow-hidden transform hover:scale-105 hover:shadow-2xl hover:shadow-green-500/50 backdrop-blur-sm shadow-lg shadow-purple-500/30"
+              whileHover={{ scale: 1.08, y: -3 }}
+              whileTap={{ scale: 0.95 }}
             >
+              {/* Left to right fill overlay */}
+              <div className="absolute inset-0 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out rounded-2xl"></div>
+
               {/* Content */}
               <span className="relative z-10 flex items-center justify-center gap-1 sm:gap-2">
                 <motion.span
@@ -93,16 +98,13 @@ const Hero = () => {
                     ease: "easeInOut"
                   }}
                 >
-                  📞
+                  📅
                 </motion.span>
-                <span className="font-extrabold text-black">
-                  Call Now for Free Demo
+                <span className="font-extrabold text-white drop-shadow-md">
+                  Schedule a Meet
                 </span>
 
               </span>
-
-              {/* Hover overlay */}
-              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 rounded-2xl"></div>
             </motion.button>
             <motion.button
               className="border-2 border-white/40 hover:border-white/60 text-white px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-lg sm:rounded-xl font-semibold text-xs sm:text-sm md:text-base transition duration-300 backdrop-blur-sm hover:bg-white/10"

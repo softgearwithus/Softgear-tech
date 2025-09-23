@@ -1,133 +1,194 @@
 // ExpertiseSection.jsx
-import React from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import React, { useRef, useEffect } from "react";
+import { motion, useInView, useAnimation } from "framer-motion";
 
 const expertiseData = [
   {
+    title: "Idea Execution & Implementation",
+    description:
+      "Transform your innovative ideas into reality with our comprehensive execution strategies and technical implementation.",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+      </svg>
+    ),
+  },
+  {
+    title: "Shopify E-commerce",
+    description:
+      "Build powerful, scalable online stores with custom Shopify solutions that drive sales and enhance user experience.",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17M17 13v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01" />
+      </svg>
+    ),
+  },
+  {
+    title: "App Development",
+    description:
+      "Create feature-rich mobile applications for iOS and Android with cutting-edge technology and seamless user interfaces.",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 18h.01M8 21h8a1 1 0 001-1V4a1 1 0 00-1-1H8a1 1 0 00-1 1v16a1 1 0 001 1z" />
+      </svg>
+    ),
+  },
+  {
     title: "Website Development",
     description:
-      "Responsive, high-performance websites with full-stack frontend and backend solutions.",
-    img: "https://images.unsplash.com/photo-1519222970733-f546218fa6d7?w=900&auto=format&fit=crop&q=70",
+      "Build responsive, high-performance websites with modern technologies and optimized user experiences across all devices.",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+      </svg>
+    ),
   },
   {
-    title: "Mobile App Development",
+    title: "Graphic Design",
     description:
-      "Feature-rich, cross-platform apps for Android & iOS, built for scalability and performance.",
-    img: "https://images.unsplash.com/photo-1480694313141-fce5e697ee25?w=900&auto=format&fit=crop&q=70",
+      "Create stunning visual identities, logos, and marketing materials that captivate your audience and strengthen your brand.",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.098 19.902a3.75 3.75 0 005.304 0l6.401-6.402M6.75 21A3.75 3.75 0 013 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 003.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008z" />
+      </svg>
+    ),
   },
   {
-    title: "Graphics & Branding",
+    title: "Automation",
     description:
-      "Creative design, logos, and branding materials that strengthen your business identity.",
-    img: "https://images.unsplash.com/photo-1613759612065-d5971d32ca49?w=900&auto=format&fit=crop&q=70",
-  },
-  {
-    title: "SEO Optimization",
-    description:
-      "Full-stack SEO strategies to increase visibility, organic traffic, and conversions.",
-    img: "https://images.unsplash.com/photo-1562577309-2592ab84b1bc?w=900&auto=format&fit=crop&q=70",
-  },
-  {
-    title: "Digital Marketing",
-    description:
-      "Targeted campaigns across Google, Facebook, and Instagram to drive growth.",
-    img: "https://images.unsplash.com/photo-1562577308-9e66f0c65ce5?w=900&auto=format&fit=crop&q=70",
-  },
-  {
-    title: "Business Consulting",
-    description:
-      "CA-backed startup compliance, tax filing, and growth strategies — tech + legal under one roof.",
-    img: "https://images.unsplash.com/photo-1611095790444-1dfa35e37b52?w=900&auto=format&fit=crop&q=70",
+      "Streamline your business processes with intelligent automation solutions that increase efficiency and reduce manual work.",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+    ),
   },
 ];
 
 export default function ExpertiseSection() {
-  const settings = {
-    // IMPORTANT: mobile-first so phones start at 1 slide
-    mobileFirst: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+  const ref = useRef(null);
+  const controls = useAnimation();
+  const isInView = useInView(ref, { once: true, threshold: 0.2, margin: "-100px" });
 
-    dots: true,
-    arrows: false,
-    infinite: true,
-    autoplay: true,
-    autoplaySpeed: 3500,
-    speed: 600,
-    swipe: true,
-    swipeToSlide: true,
-    touchThreshold: 10,
-    adaptiveHeight: true,
+  useEffect(() => {
+    if (isInView) {
+      controls.start("visible");
+    }
+  }, [isInView, controls]);
 
-    // Breakpoints are MIN-WIDTH when mobileFirst = true
-    responsive: [
-      { breakpoint: 768, settings: { slidesToShow: 2 } },  // ≥768px => 2
-      { breakpoint: 1024, settings: { slidesToShow: 3 } }, // ≥1024px => 3
-    ],
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: {
+      opacity: 0,
+      y: 30,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const headingVariants = {
+    hidden: {
+      opacity: 0,
+      y: 30,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
   };
 
   return (
-    <section className="bg-white py-20">
-      {/* Inline CSS: spacing + mobile width enforcement */}
-      <style>{`
-        /* Make slider use full width */
-        .slick-slider, .slick-list, .slick-track { width: 100%; }
+    <section className="bg-gradient-to-br from-indigo-50 via-white to-cyan-50 py-16 relative overflow-hidden">
+      <div className="max-w-6xl mx-auto px-6 relative z-10" ref={ref}>
+        <motion.div
+          className="text-center mb-12"
+          variants={headingVariants}
+          initial="hidden"
+          animate={controls}
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-3">
+            Our Expertise
+          </h2>
+          <p className="text-base text-indigo-600 mb-4">
+            End-to-End Digital Solutions for Startups & SMEs
+          </p>
+          <div className="w-20 h-1 bg-gradient-to-r from-indigo-500 to-cyan-500 mx-auto rounded-full"></div>
+        </motion.div>
 
-        /* Consistent gap between slides without squishing content */
-        .slick-list { margin: 0 -12px; }
-        .slick-slide { padding: 0 12px; }
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+          variants={containerVariants}
+          initial="hidden"
+          animate={controls}
+        >
+          {expertiseData.map((item, idx) => (
+            <motion.div
+              key={idx}
+              variants={cardVariants}
+              className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200/60 relative group hover:border-indigo-300/60 transition-all duration-500 shadow-lg hover:shadow-xl"
+            >
+              <div className="p-6 relative">
+                <div className="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-indigo-500 to-cyan-500 rounded-xl mb-4 text-white group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  {item.icon}
+                </div>
 
-        /* Ensure each slide's inner wrapper stretches */
-        .slick-slide > div { display: flex; width: 100%; }
+                <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-indigo-700 transition-colors duration-300">
+                  {item.title}
+                </h3>
+                <div className="w-12 h-0.5 bg-gradient-to-r from-indigo-500 to-cyan-500 mb-3 rounded-full group-hover:w-16 transition-all duration-300"></div>
+                <p className="text-gray-600 leading-relaxed text-sm mb-4">
+                  {item.description}
+                </p>
 
-        /* On phones, guarantee one full-width card and hide partial peeks */
-        @media (max-width: 767.98px) {
-          .slick-list { overflow: hidden; }
-          .slick-slide { padding: 0 10px; }
-          .slick-slide > div { width: 100% !important; }
-        }
+                <div className="flex items-center text-indigo-600 hover:text-indigo-800 transition-colors duration-300 cursor-pointer group/link">
+                  <span className="text-sm font-semibold">Learn More</span>
+                  <svg
+                    className="w-4 h-4 ml-2 transform group-hover/link:translate-x-1 transition-transform duration-300"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </div>
 
-        /* Nicer dots */
-        .slick-dots { bottom: -30px; }
-        .slick-dots li button:before { font-size: 11px; opacity: .45; }
-        .slick-dots li.slick-active button:before { opacity: 1; }
-      `}</style>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
-        <h2 className="text-4xl font-bold text-gray-900">Our Expertise</h2>
-        <p className="mt-3 text-lg text-blue-600">
-          End-to-End Digital Solutions for Startups & SMEs
-        </p>
-
-        <div className="mt-14">
-          <Slider {...settings}>
-            {expertiseData.map((item, idx) => (
-              <div key={idx} className="w-full">
-                <div className="relative w-full rounded-xl shadow-lg overflow-hidden min-h-[420px] flex flex-col group">
-                  <img
-                    src={item.img}
-                    alt={item.title}
-                    loading="lazy"
-                    className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="bg-gradient-to-b from-blue-700/90 to-blue-900/90 text-white p-6 flex flex-col flex-1 justify-between">
-                    <div>
-                      <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                      <div className="w-12 h-[3px] bg-blue-400 mb-3"></div>
-                      <p className="text-gray-200 leading-relaxed text-sm sm:text-base">
-                        {item.description}
-                      </p>
-                    </div>
-                    {/* optional footer or CTA could go here */}
-                  </div>
+                {/* Background Pattern */}
+                <div className="absolute top-4 right-4 opacity-5 group-hover:opacity-10 transition-opacity duration-300">
+                  <div className="w-16 h-16 border border-indigo-200 rounded-full"></div>
+                  <div className="absolute top-3 left-3 w-10 h-10 border border-cyan-200 rounded-full"></div>
                 </div>
               </div>
-            ))}
-          </Slider>
-        </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
 }
+
