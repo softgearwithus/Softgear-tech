@@ -1,5 +1,5 @@
 import Navbar from "./Navbar"
-import MiniCard from "./MiniCard"
+import MiniCard from "./miniCard"
 import SlidingBanner from "./SlidingBanner"
 import { motion } from "framer-motion"
 
