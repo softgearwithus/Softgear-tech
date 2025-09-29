@@ -1,157 +1,131 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
-import Navbar from "./Navbar";
-import HeoImage from "../assets/hero-image.png"
-import bookImage from "../assets/bookinow.png"
-import detailsImage from "../assets/details.jpg"
+import Navbar from "./Navbar"
+import MiniCard from "./MiniCard"
+import SlidingBanner from "./SlidingBanner"
+import { motion } from "framer-motion"
 
-// ✅ Each slide has its own content + image
-const slides = [
-  {
-    title: (
-      <>
-        Want to <span className="text-white">transform your business</span> with us?
-      </>
-    ),
-    description: (
-      <>
-        Enter your details — tell us your <strong>business name</strong>, 
-        <strong>problems faced</strong>, <strong>age of business</strong>, 
-        <strong>sector</strong>, and <strong>contact details</strong>.
-      </>
-    ),
-    buttonText: "Enter Details",
-    link: "/details",
-    image: detailsImage, // ✅ each slide has its own image
-  },
-  {
-    title: (
-      <>
-        Starting a <span className="text-white">new company?</span>
-      </>
-    ),
-    description: (
-      <>
-        Your compliances, our responsibility.  
-        From <strong>Startup India</strong> to <strong>yearly compliance</strong> 
-        & <strong>company incorporation</strong> — we’ve got you covered.
-      </>
-    ),
-    buttonText: "Get Started",
-    link: "/compliance",
-    image: HeoImage,
-  },
-  {
-    title: (
-      <>
-        Need <span className="text-white">guidance</span> on business growth?
-      </>
-    ),
-    description: "Book a free consultation session with our experts today.",
-    buttonText: "Book Free Session",
-    link: "/consultation",
-    image: bookImage,
-  },
-];
-
-export default function Hero() {
-  const [index, setIndex] = useState(0);
-
-  // Auto slide
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % slides.length);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, []);
-
-  // Swipe detection
-  const handleDragEnd = (e, { offset, velocity }) => {
-    if (offset.x < -100 || velocity.x < -500) {
-      // swipe left → next slide
-      setIndex((prev) => (prev + 1) % slides.length);
-    } else if (offset.x > 100 || velocity.x > 500) {
-      // swipe right → prev slide
-      setIndex((prev) => (prev - 1 + slides.length) % slides.length);
-    }
-  };
-
+const Hero = () => {
   return (
-    <div className="relative bg-blue-700 text-gray-950 min-h-screen overflow-hidden">
-      {/* Navbar */}
-      <Navbar />
+    <>
+      <div className="flex flex-col justify-center items-center relative min-h-screen bg-gradient-to-br from-[#111d39] via-[#1b378a] to-green-800 px-2 sm:px-0">
+        <Navbar className="absolute top-0 left-0 right-0" />
 
-      {/* Hero Content */}
-      <div className="max-w-7xl mx-auto px-6 pt-32 pb-16 md:pt-40">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, x: 80 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -80 }}
-            transition={{ duration: 0.6 }}
-            drag="x"
-            dragConstraints={{ left: 0, right: 0 }}
-            onDragEnd={handleDragEnd}
-            className="flex flex-col md:flex-row items-center gap-12"
+        {/* Left side cards */}
+
+
+        {/* Right side cards */}
+
+        <MiniCard
+          icon="🚀"
+          value="Launch"
+          label="Complete startup solutions"
+          className="absolute bottom-16 lg:bottom-20 right-2 sm:right-4 lg:right-8 xl:right-16 hidden lg:block"
+        />
+
+        <div className="relative mt-8 sm:mt-10 md:mt-12 lg:mt-16 xl:mt-16 text-center w-full px-3 sm:px-4 md:px-6 lg:px-8 text-white overflow-visible">
+          <motion.h1
+            className="text-3xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-extrabold mb-3 sm:mb-4 md:mb-5 lg:mb-6 xl:mb-8 leading-tight whitespace-nowrap sm:whitespace-normal"
+            style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {/* Left Text */}
-            <div className="flex-1">
-              <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
-                {slides[index].title}
-              </h1>
-              <p className="mt-6 text-lg text-white">{slides[index].description}</p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Link to={slides[index].link}>
-                  <button className="bg-cyan-500 hover:bg-cyan-600 px-6 py-3 rounded-lg text-lg font-semibold text-white shadow-lg transition">
-                    {slides[index].buttonText}
-                  </button>
-                </Link>
-              </div>
-            </div>
+            Softgear Technologies
+          </motion.h1>
 
-            {/* Right Image */}
-            <div className="flex-1 flex justify-center">
-              <div className="relative w-72 h-72 md:w-96 md:h-96">
-                <div className="absolute inset-0 rounded-full bg-cyan-500/20 blur-3xl animate-pulse"></div>
-                <img
-                  src={slides[index].image}
-                  alt="Slide Illustration"
-                  className="relative z-10 drop-shadow-2xl"
-                />
-              </div>
-            </div>
+          <motion.p
+            className="text-base sm:text-lg md:text-xl lg:text-2xl mb-2 sm:mb-3 md:mb-4 leading-relaxed font-light tracking-wide text-blue-100 max-w-4xl mx-auto px-2"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            Empowering startups & SMEs with{" "}
+            <span className="font-semibold text-teal-300">comprehensive digital solutions</span>
+          </motion.p>
+
+          <motion.p
+            className="text-sm sm:text-base md:text-lg lg:text-xl mb-4 sm:mb-6 md:mb-8 leading-relaxed font-normal text-gray-200 max-w-4xl mx-auto px-2 hidden sm:block"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            From{" "}
+            <span className="text-blue-300 font-medium">web development</span> and{" "}
+            <span className="text-teal-300 font-medium">mobile apps</span> to{" "}
+            <span className="text-green-300 font-medium">branding, SEO</span>, and{" "}
+            <span className="text-yellow-300 font-medium">compliance solutions</span> - we provide end-to-end digital services.
+          </motion.p>
+
+          <motion.div
+            className="mb-4 sm:mb-6 md:mb-8"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+          >
+            <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold mb-2 sm:mb-3 text-gradient bg-gradient-to-r from-teal-300 to-blue-300 bg-clip-text text-transparent">
+              Ready to Get Started?
+            </h3>
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl font-light text-gray-300 mb-3 sm:mb-4 md:mb-6 px-2">
+              Transform your business with our{" "}
+              <span className="font-semibold text-teal-300">proven digital solutions</span>
+            </p>
           </motion.div>
-        </AnimatePresence>
 
-        {/* Slide Indicators */}
-        <div className="flex gap-2 mt-8 justify-center">
-          {slides.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setIndex(i)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                i === index ? "bg-cyan-500 w-6" : "bg-white/50 hover:bg-white"
-              }`}
-            ></button>
-          ))}
+          <motion.div
+            className="flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 justify-center mb-4 sm:mb-6 md:mb-8 px-2"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.0 }}
+          >
+            <motion.button
+              className="relative bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 sm:px-6 md:px-8 lg:px-10 py-3 sm:py-4 md:py-5 rounded-2xl font-bold text-xs sm:text-sm md:text-base lg:text-lg transition-all duration-700 group overflow-hidden transform hover:scale-105 hover:shadow-2xl hover:shadow-green-500/50 backdrop-blur-sm shadow-lg shadow-purple-500/30"
+              whileHover={{ scale: 1.08, y: -3 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {/* Left to right fill overlay */}
+              <div className="absolute inset-0 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out rounded-2xl"></div>
+
+              {/* Content */}
+              <span className="relative z-10 flex items-center justify-center gap-1 sm:gap-2">
+                <motion.span
+                  className="text-lg sm:text-xl md:text-2xl lg:text-3xl"
+                  animate={{
+                    rotate: [0, 15, -15, 0],
+                    scale: [1, 1.1, 1]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  📅
+                </motion.span>
+                <span className="font-extrabold text-white drop-shadow-md">
+                  Schedule a Meet
+                </span>
+
+              </span>
+            </motion.button>
+            <motion.button
+              className="border-2 border-white/40 hover:border-white/60 text-white px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-lg sm:rounded-xl font-semibold text-xs sm:text-sm md:text-base transition duration-300 backdrop-blur-sm hover:bg-white/10"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              View Portfolio
+            </motion.button>
+          </motion.div>
+
+          <motion.div
+            className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto px-2"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.2 }}
+          >
+            <SlidingBanner />
+          </motion.div>
         </div>
       </div>
-
-      {/* Bottom Wave Divider */}
-      <div className="absolute bottom-0 w-full overflow-hidden leading-none rotate-180">
-        <svg
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-          className="relative block w-full h-[100px]"
-        >
-          <path
-            d="M321.39,56.44c58.39,0,113.47,15.13,168.15,30.26,58.46,15.85,117.66,31.7,176.13,31.7s117.67-15.85,176.13-31.7C950.1,71.57,1005.18,56.44,1063.57,56.44s113.47,15.13,168.15,30.26V0H0V86.7C53.3,71.57,107.48,56.44,165.87,56.44Z"
-            className="fill-white"
-          ></path>
-        </svg>
-      </div>
-    </div>
-  );
+    </>
+  )
 }
+export default Hero
