@@ -4,7 +4,6 @@ import ExpertiseSection from "../components/ExpertiseSection";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import StatsSection from "../components/StatsSection";
-import SuccessStories from "../components/SuccessStories";
 import TechnologiesWeUse from "../components/TechnologiesWeUse";
 
 function Home() {
@@ -14,7 +13,6 @@ function Home() {
       <StatsSection />
       <ExpertiseSection />
       <TechnologiesWeUse />
-      <SuccessStories />
       <ClientsFeedback />
       <Footer />
     </>

@@ -9,6 +9,7 @@ import CompliancePage from "./pages/ComplinceDetails";
 import ConsultationPage from "./pages/ConsultationPage";
 import AboutusPage from "./pages/Aboutus";
 import Whatwedo from "./pages/Whatwedo";
+import Projects from "./pages/Projects";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/consultation" element={<ConsultationPage />} />
         <Route path="/aboutus" element={<AboutusPage />} />
         <Route path="/whatwedo" element={<Whatwedo />} />
+        <Route path="/projects" element={<Projects/>} />
       </Routes>
     </>
   );

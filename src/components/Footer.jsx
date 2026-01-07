@@ -39,11 +39,9 @@ export default function Footer() {
               </p>
               <div className="flex gap-4">
                 {[
-                  { icon: FaFacebookF, href: "#", color: "hover:text-blue-400" },
-                  { icon: FaLinkedinIn, href: "#", color: "hover:text-blue-500" },
-                  { icon: FaXTwitter, href: "#", color: "hover:text-gray-400" },
-                  { icon: FaYoutube, href: "#", color: "hover:text-red-500" },
-                  { icon: FaInstagram, href: "#", color: "hover:text-pink-500" },
+             ,
+                  { icon: FaLinkedinIn, href: "https://www.linkedin.com/company/softgear-technologies/", color: "hover:text-blue-500" },
+                  { icon: FaInstagram, href: "https://www.instagram.com/softgear.in?igsh=MXJ3dmoxMXFveGZ3Mg==", color: "hover:text-pink-500" },
                 ].map((social, index) => (
                   <a
                     key={index}
@@ -108,15 +106,16 @@ export default function Footer() {
               <div className="space-y-4 mb-8">
                 <div className="flex items-center gap-3 text-gray-300">
                   <FaPhone className="text-blue-400" />
-                  <span>+91 XXX XXX XXXX</span>
+                  <span>+91 8278755136</span>
+                  <span>+91 9041029969</span>
                 </div>
                 <div className="flex items-center gap-3 text-gray-300">
                   <FaEnvelope className="text-blue-400" />
-                  <span>info@softgeartech.com</span>
+                  <span>technologiessoftgear@gmail.com</span>
                 </div>
                 <div className="flex items-start gap-3 text-gray-300">
                   <FaLocationDot className="text-blue-400 mt-1" />
-                  <span>Your Location, City, Country</span>
+                  <span>Chandigarh, India</span>
                 </div>
               </div>
 
