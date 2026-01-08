@@ -107,7 +107,7 @@ const Packages = () => {
         {
           name: "Dream to Reality",
           subtitle: "Complete Startup Package",
-          price: "Starting at ₹1,25,000",
+          price: "",
           description: "End-to-end startup solution from idea validation to launch.",
           features: [
             { icon: <FaUserTie />, text: "Business Consultancy" },

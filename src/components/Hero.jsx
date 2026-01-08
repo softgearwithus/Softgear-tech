@@ -117,7 +117,7 @@ const Hero = () => {
             </motion.button>
 
             <motion.button
-              onClick={() => navigate("/projects")}
+              onClick={() => navigate("/")}
               className="border-2 border-white/40 hover:border-white/60 text-white px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-lg sm:rounded-xl font-semibold text-xs sm:text-sm md:text-base transition duration-300 backdrop-blur-sm hover:bg-white/10"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
