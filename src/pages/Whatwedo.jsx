@@ -1028,7 +1028,12 @@ const handleSubmit = async (e) => {
                       <div className="absolute inset-0 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out rounded-lg sm:rounded-2xl"></div>
                       <span className="relative z-10 flex items-center justify-center gap-2">
                         <span className="text-lg sm:text-2xl">💬</span>
-                        <span className="font-extrabold text-white">
+                        <span  onClick={() =>
+                window.open(
+                  "https://calendar.google.com/calendar/appointments/schedules/AcZssZ2Bf-9ScNlGD-6362H41iT0ImAMV_PhOyVJ-D2i-_sJq4QD7Bs9_LUPIu8XsetEMKFfnTBLiAuW?gv=true",
+                  "_blank"
+                )
+              } className="font-extrabold text-white">
                           Let's Talk
                         </span>
                       </span>
