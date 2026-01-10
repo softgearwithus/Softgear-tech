@@ -342,6 +342,12 @@ const Packages = () => {
                   className={`w-full py-5 px-8 bg-gradient-to-r ${packageCategories[activeCategory].gradient} group-hover:bg-gradient-to-r group-hover:from-gray-100 group-hover:to-gray-300 group-hover:text-gray-800 text-white font-bold rounded-2xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 relative overflow-hidden group/btn z-20`}
                   whileHover={{ y: -3 }}
                   whileTap={{ scale: 0.98 }}
+                  onClick={() =>
+                window.open(
+                  "https://calendar.google.com/calendar/appointments/schedules/AcZssZ2Bf-9ScNlGD-6362H41iT0ImAMV_PhOyVJ-D2i-_sJq4QD7Bs9_LUPIu8XsetEMKFfnTBLiAuW?gv=true",
+                  "_blank"
+                )
+              } 
                 >
                   <span className="relative z-10 transition-all duration-300 group-hover/btn:tracking-wider">Get Started</span>
                   <div className="absolute inset-0 bg-white/10 group-hover/btn:bg-gray-800/10 transition-all duration-300 rounded-2xl"></div>
@@ -380,7 +386,12 @@ const Packages = () => {
                   whileHover={{ scale: 1.05, y: -3 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <span className="relative z-10">Schedule Free Consultation</span>
+                  <span onClick={() =>
+                window.open(
+                  "https://calendar.google.com/calendar/appointments/schedules/AcZssZ2Bf-9ScNlGD-6362H41iT0ImAMV_PhOyVJ-D2i-_sJq4QD7Bs9_LUPIu8XsetEMKFfnTBLiAuW?gv=true",
+                  "_blank"
+                )
+              } className="relative z-10">Schedule Free Consultation</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -translate-x-full group-hover/cta:translate-x-full transition-transform duration-1000 ease-out"></div>
                 </motion.button>
                 <motion.button
