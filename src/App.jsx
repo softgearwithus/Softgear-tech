@@ -11,6 +11,7 @@ import AboutusPage from "./pages/Aboutus";
 import Whatwedo from "./pages/Whatwedo";
 import Projects from "./pages/Projects";
 import WhyERPManufacturing from "./pages/Blogs/WhyERPManufacturing";
+import EcommerceWebsiteDesignerMohali from "./pages/Blogs/EcommerceWebsiteDesignerMohali";
 
 function App() {
   return (
@@ -29,6 +30,10 @@ function App() {
         <Route
           path="/blogs/why-erp-is-crucial-for-manufacturing-companies"
           element={<WhyERPManufacturing />}
+        />
+        <Route
+          path="/ecommerce-website-designer-mohali"
+          element={<EcommerceWebsiteDesignerMohali />}
         />
       </Routes>
     </>
